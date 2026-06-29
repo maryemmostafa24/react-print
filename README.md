@@ -68,6 +68,40 @@ const { handlePrint } = useReactToPrint({
 <button type="button" onClick={() => void handlePrint()}>Print</button>
 ```
 
+## i18n (`useI18n`)
+
+Print renders in a sandboxed iframe, so React context (including i18n) is not inherited automatically. Wrap the print tree with your i18n provider:
+
+```tsx
+import { createContextPrintWrapper, usePrinter } from '@mmmmzxe/react-print';
+import { I18nContext, useI18n } from '@/i18n';
+
+function PrintInvoice() {
+  const i18n = useI18n();
+  const { print } = usePrinter({
+    wrapper: createContextPrintWrapper(I18nContext, i18n),
+  });
+
+  return (
+    <button
+      type="button"
+      onClick={() =>
+        void print({
+          title: i18n.t('invoice.title'),
+          component: <Invoice />,
+        })
+      }
+    >
+      {i18n.t('actions.print')}
+    </button>
+  );
+}
+```
+
+Inside `Invoice`, `const { t } = useI18n()` works because the iframe tree is wrapped with `I18nContext.Provider`.
+
+You can also pass a custom wrapper per print call, or chain multiple providers with `chainPrintWrappers`.
+
 ## Tailwind CSS
 
 The engine clones `<link rel="stylesheet">` and `<style>` tags from the host page into the print iframe and syncs `:root` theme tokens.

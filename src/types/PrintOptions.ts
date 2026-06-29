@@ -6,12 +6,15 @@ export type PrintOrientation = 'portrait' | 'landscape';
 
 export type PrintMarginUnit = 'mm' | 'px';
 
+export type PrintWrapper = (component: ReactElement) => ReactElement;
+
 export type PrintOptions = {
     paper?: PrintPaperSize;
     orientation?: PrintOrientation;
     margin?: number;
     marginUnit?: PrintMarginUnit;
     title?: string;
+    wrapper?: PrintWrapper;
 };
 
 export type PrintRequest = PrintOptions & {

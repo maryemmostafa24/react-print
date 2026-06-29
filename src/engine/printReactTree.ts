@@ -71,7 +71,12 @@ function cleanupPrintSandbox(iframe: HTMLIFrameElement, root: Root | null): void
     iframe.remove();
 }
 
-export async function printReactTree({ component, title = 'Print', ...options }: PrintReactTreeParams): Promise<void> {
+export async function printReactTree({
+    component,
+    title = 'Print',
+    wrapper,
+    ...options
+}: PrintReactTreeParams): Promise<void> {
     const { iframe, iframeDocument, iframeWindow } = createPrintIframe(title);
 
     const { container, root } = mountPrintRoot(iframeDocument);
@@ -82,8 +87,10 @@ export async function printReactTree({ component, title = 'Print', ...options }:
 
     await injectDocumentStyles(iframeDocument, resolvePrintPageCss(options));
 
+    const content = wrapper ? wrapper(component) : component;
+
     flushSync(() => {
-        root.render(component);
+        root.render(content);
     });
 
     await waitForPrintResources(container, iframeWindow);
