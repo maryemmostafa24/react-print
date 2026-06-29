@@ -1,0 +1,68 @@
+{
+    "name": "@mmmmzxe/react-print",
+    "version": "1.0.0",
+    "description": "Unified React print engine — render components in a sandboxed iframe with Tailwind/CSS sync and native print.",
+    "author": "Maryem",
+    "license": "MIT",
+    "type": "module",
+    "sideEffects": false,
+    "engines": {
+        "node": ">=18"
+    },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        }
+    },
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "typecheck": "tsc --noEmit",
+        "prepublishOnly": "npm run build"
+    },
+    "peerDependencies": {
+        "react": ">=18.0.0",
+        "react-dom": ">=18.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^19.0.0",
+        "@types/react-dom": "^19.0.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "tsup": "^8.5.0",
+        "typescript": "^5.8.3"
+    },
+    "overrides": {
+        "esbuild": ">=0.28.1"
+    },
+    "publishConfig": {
+        "access": "public",
+        "provenance": true
+    },
+    "keywords": [
+        "react",
+        "print",
+        "iframe",
+        "tailwind",
+        "pdf",
+        "document"
+    ],
+    "homepage": "https://github.com/mmmmzxe/react-print#readme",
+    "bugs": {
+        "url": "https://github.com/mmmmzxe/react-print/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mmmmzxe/react-print.git"
+    }
+}
