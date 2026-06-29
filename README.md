@@ -1,20 +1,21 @@
 # @mmmmzxe/react-print
 
-Unified React print engine for enterprise apps. Renders a declarative React component tree inside a hidden iframe, synchronizes active styles (Tailwind CSS, CSS modules, styled-components), and triggers the native print dialog.
+[![npm version](https://img.shields.io/npm/v/@mmmmzxe/react-print.svg)](https://www.npmjs.com/package/@mmmmzxe/react-print)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+Unified React print engine. Renders a declarative React component tree inside a hidden iframe, synchronizes active styles (Tailwind CSS, CSS modules, styled-components), and triggers the native print dialog.
 
 ## Install
 
 ```bash
 npm install @mmmmzxe/react-print
-# or
-bun add @mmmmzxe/react-print
 ```
 
 **Peer dependencies:** `react` and `react-dom` (18+).
 
 ## Quick start
 
-### 1. Imperative print (recommended)
+### Imperative print (recommended)
 
 Pass print options directly when calling `print` — no provider or context required:
 
@@ -32,7 +33,7 @@ await print({
 });
 ```
 
-### 2. Declarative print
+### Declarative print
 
 ```tsx
 import { Print } from '@mmmmzxe/react-print';
@@ -49,7 +50,7 @@ import { Print } from '@mmmmzxe/react-print';
 </Print>
 ```
 
-### 3. Ref-based print
+### Ref-based print
 
 Print existing DOM via a ref:
 
@@ -111,31 +112,22 @@ import { PrintSheet, PrintSection } from '@mmmmzxe/react-print';
 | `printReactTree` | Low-level engine entry |
 | `PrintSheet` / `PrintSection` | Tailwind layout primitives |
 
-## Publish to npm
-
-From `react-print`:
+## Development
 
 ```bash
-npm login
-npm publish --access public
+git clone https://github.com/maryemmostafa24/react-print.git
+cd react-print
+npm install
+npm run build
+npm run typecheck
 ```
 
-Build runs automatically via `prepublishOnly`.
+## Links
+
+- [npm package](https://www.npmjs.com/package/@mmmmzxe/react-print)
+- [GitHub repository](https://github.com/maryemmostafa24/react-print)
+- [Report a security issue](SECURITY.md)
 
 ## License
 
 MIT — see [LICENSE](LICENSE).
-
-## Security
-
-Report vulnerabilities privately; see [SECURITY.md](SECURITY.md). This package has no runtime dependencies (React is a peer dependency only).
-
-## Local development (monorepo)
-
-```bash
-# from repo root
-bun install
-bun run build:packages
-```
-
-The host app should depend on `"@mmmmzxe/react-print": "workspace:*"`.
