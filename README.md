@@ -10,7 +10,6 @@ Unified React print engine. Renders a declarative React component tree inside a 
 ```bash
 npm install @mmmmzxe/react-print
 ```
-
 **Peer dependencies:** `react` and `react-dom` (18+).
 
 ## Quick start
